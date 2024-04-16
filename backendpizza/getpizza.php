@@ -2,13 +2,13 @@
 $sql = '';
 if(count($keresfutar) > 1){
     if(is_int(intval($keresfutar[1]))){
-        $sql = 'SELECT * FROM futar WHERE fazon=' . $keresFutar[1];
+        $sql = 'SELECT * FROM `futar` WHERE fazon=' . $keresfutar[1];
     }else{
         http_response_code(404);
         echo 'Nem létező ügyfel';
     }
 }else{
-    $sql = 'SELECT * FROM futar WHERE 1';
+    $sql = 'SELECT * FROM `futar` WHERE 1';
 }
 require_once "./databaseconnection.php";
 $result = $connection->query($sql);

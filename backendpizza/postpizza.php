@@ -3,7 +3,7 @@ $fazon = $_POST("fazon");
 $fnev = $_POST("fnev");
 $ftel = $_POST("ftel");
 require_once '/databaseconnection.php';
-$sql = "INSERT INTO futar (fazon, fnev, ftel) VALUES (?, ?, ?)";
+$sql = "INSERT INTO `futar` (`fazon`, `fnev`, `ftel`) VALUES (?, ?, ?)";
 $stml = $connection->prepare($sql);
 $stml->bind_Param("isi", $fazon, $fnev, $ftel);
 if($stml->execute()){

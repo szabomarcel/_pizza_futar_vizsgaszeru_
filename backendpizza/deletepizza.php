@@ -2,7 +2,7 @@
 $sql = '';
 if(count($keresfutar) > 1){
     if(is_int(intval($keresfutar))){
-        $sql = 'DELETE FROM futar WHERE fazon=' .$keresFutar[1];
+        $sql = 'DELETE FROM futar WHERE fazon=' .$keresfutar[1];
     }else{
         http_response_code(404);
         echo 'Nem létező futár';

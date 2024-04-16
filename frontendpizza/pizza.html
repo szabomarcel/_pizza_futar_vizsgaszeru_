@@ -21,13 +21,13 @@
               <div class=" collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto ">
                   <li class="nav-item">
-                    <a class="nav-link mx-2" href="http://localhost/pizza_futar_vizsgaszeru/frontendpizza/pizza.html">Ügyfelek</a>
+                    <a class="nav-link mx-2" href="http://localhost/_pizza_futar_vizsgaszeru_/frontendpizza/pizza.html">Ügyfelek</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link mx-2" href="http://localhost/pizza_futar_vizsgaszeru/frontendpizza/pizza.html">Pizzák</a>
+                    <a class="nav-link mx-2" href="http://localhost/_pizza_futar_vizsgaszeru_/frontendpizza/pizza.html">Pizzák</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link mx-2 active" aria-current="page" href="http://localhost/pizza_futar_vizsgaszeru/frontendpizza/pizza.html">Futárok</a>
+                    <a class="nav-link mx-2 active" aria-current="page" href="http://localhost/_pizza_futar_vizsgaszeru_/frontendpizza/pizza.html">Futárok</a>
                   </li>
                 </ul>
               </div>
@@ -35,27 +35,27 @@
           </nav>
         <!--Navbar end-->
         <div class="container">
-            <form action="#" method="post" class="row" id="dolgozoForm">
+            <form action="#" method="POST" class="row" id="futarForm">
                 <fieldset>
                     <div class="row">
-                        <div class="mb-3 col-2">
-                            <label for="fazon" class="form-label">Azonosító</label>
+                        <div class="mb-3 col-4">
+                            <label for="fazon" class="form-label">Azonosító: </label>
                             <input type="number" class="form-control" id="fazon" name="fazon" numeric required>
                         </div>
-                        <div class="mb-3 col-5">
-                            <label for="fnev" class="form-label">Név</label>
+                        <div class="mb-3 col-4">
+                            <label for="fnev" class="form-label">Név: </label>
                             <input type="text" class="form-control" id="fnev" name="fnev" required>
                         </div>
-                        <div class="mb-3 col-5">
-                            <label for="ftel" class="form-label">Telefonszám</label>
+                        <div class="mb-3 col-4">
+                            <label for="ftel" class="form-label">Telefonszám: </label>
                             <input type="text" class="form-control" id="ftel" name="ftel" required>
                         </div>
                     </div>
                 </fieldset>
                 <div class="d-flex justify-content-around">
-                    <button type="button" class="btn btn-primary" id="create"><i class="fa-solid fa-plus"></i></button>
-                    <button type="button" class="btn btn-dark" id="read"><i class="fa-solid fa-list-check"></i></button>
-                    <button type="button" class="btn btn-info" id="update"><i class="fa-solid fa-pen"></i></button>
+                    <button type="button" class="btn btn-primary" id="create"><i class="fa-solid fa-plus"> Create</i></button>
+                    <button type="button" class="btn btn-dark" id="read"><i class="fa-solid fa-list-check"> Read</i></button>
+                    <button type="button" class="btn btn-info" id="update"><i class="fa-solid fa-pen"> Update</i></button>
                 </div>
             </form>
             <div id="futarugyfellista">
