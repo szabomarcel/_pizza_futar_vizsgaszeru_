@@ -1,17 +1,18 @@
 <?php
-$putadat = fopen('php://input', 'r');
-$raw_data = '';
-while($chunk = fread($putadat, 1024))
+$putadat = fopen('php://input', "r");
+$raw_data = "";
+while($chunk = fread($putadat, 1024)){
     $raw_data .=$chunk;
+}
 fclose($putadat);
 $adatJSON = json_decode($raw_data);
-$fazon = $_POST("fazon");
-$fnev = $_POST("fnev");
-$ftel = $_POST("ftel");
+$fazon = $adatJSON->fazon;
+$fnev = $adatJSON->fnev;
+$ftel = $adatJSON->ftel;
 require_once './databaseconnection.php';
-$sql = "UPDATE `futar` SET `fnev=?`, `ftel=?` WHERE `fazon=?`";
+$sql = "UPDATE futar SET fnev=?, ftel=? WHERE fazon=?";
 $stml = $connection->prepare($sql);
-$stml->bind_param("sii", $fnev, $ftel, $fazon);
+$stml->bind_param("ssi", $fnev, $ftel, $fazon);
 if($stml->execute()){
     http_response_code(201);
     echo "Sikeres módosítás";

@@ -2,10 +2,11 @@ document.addEventListener("DOMContentLoaded", function(){
     const createButton = document.getElementById("create");
     const readButton = document.getElementById("read");
     const updateButton = document.getElementById("update");    
+    const selectButton = document.getElementById("select");
 
     createButton.addEventListener("click", async function () {
-        //let fazon = document.createElement("fazon").value;
-        let baseUrl ="http://localhost/_pizza_futar_vizsgaszeru_/index.php?futarok/" + fazon;
+        let fazon = document.createElement("fazon").value;
+        const baseUrl ="http://localhost/_pizza_futar_vizsgaszeru_/index.php?futarok/" + fazon;
         const formdata = new FormData(document.getElementById("futarForm"));
         let options = {
             method: "POST",
@@ -22,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     updateButton.addEventListener("click", async function(){        
-        let baseUrl ="http://localhost/_pizza_futar_vizsgaszeru_/index.php?futarok/" + fazon;
+        const baseUrl ="http://localhost/_pizza_futar_vizsgaszeru_/index.php?futarok/" + fazon;
         let object = {
             fazon: document.getElementById("fazon").value,
             fnev: document.getElementById("fnev").value,
@@ -39,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     readButton.addEventListener("click", async function(){
-        let baseUrl ="http://localhost/_pizza_futar_vizsgaszeru_/index.php?futarok";
+        const baseUrl ="http://localhost/_pizza_futar_vizsgaszeru_/index.php?futarok";
         let options = {
             method: "GET",
             mode: "cors"
@@ -62,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function(){
         }
         futarDiv.innerHTML = tablazat + "</tbody></tbody>";
         return futarDiv;
-    }
+    };
 
     function futarSor(futar){
         let sor = `<tr>
@@ -71,11 +72,11 @@ document.addEventListener("DOMContentLoaded", function(){
         <td>${futar.ftel}</td>
         <td>
             <button type="button" class="btn btn-outline-secondary" onclick="adatBetoltes(${futar.fazon}, '${futar.fnev}', '${futar.ftel}')"><i class="fa-regular fa-hand-point-left"></i>Kiválasztás</button>
-            <button type="button" class="btn btn-outline-secondary" onclick="adatTorles(${futar.fazon}"><i class="fa-regular fa-hand-point-left"></i>Kiválasztás</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="adatTorles(${futar.fazon}"><i class="fa-solid fa-trash"></i>Törlés</button>
         </td>
         </tr>`;
         return sor;
-    }
+    };
 
     function futarFejlec(){
         let fejlec = `<table class="table table-striped">
@@ -103,6 +104,22 @@ function adatBetoltes(fazon, fnev, ftel){
     document.getElementById("fazon").value=fazon;
     document.getElementById("fnev").value=fnev;
     document.getElementById("ftel").value=ftel;
+    response.then(function(response){
+        if(response.ok){
+            let data= response.json();
+        }else{
+            console.error("Hiba a szerverben!");
+        }
+    });
+}
+
+function adatTorles(fazon){
+    let baseUrl="http://localhost/_pizza_futar_vizsgaszeru_/index.php?futarok/" + fazon;
+    let options={
+        method: "DELETE",
+        mode: "cors"
+    };
+    let response= fetch(baseUrl, options);
     response.then(function(response){
         if(response.ok){
             let data= response.json();
